@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.AhmadTakkoush.QuranRadio</id>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <name>Quran Radio</name>
+  <summary>Stream Quran Karim radio stations from your system tray</summary>
+
+  <description>
+    <p>
+      Quran Radio is a lightweight system tray application for Linux that lets
+      you listen to Quran Karim radio stations without opening a browser or a
+      heavy media player.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Two built-in stations: Quran Kareem Beirut and Cairo (ERTU 98.2 FM)</li>
+      <li>Play, stop, and switch stations directly from the tray menu</li>
+      <li>Volume slider in the controls popup</li>
+      <li>Remembers your last station and volume across sessions</li>
+      <li>Minimal, dark-themed interface with Islamic green accents</li>
+    </ul>
+  </description>
+
+  <developer id="io.github.AhmadTakkoush">
+    <name>Ahmad Takkoush</name>
+  </developer>
+
+  <url type="homepage">https://github.com/AhmadTakkoush/quran-karim-radio</url>
+  <url type="bugtracker">https://github.com/AhmadTakkoush/quran-karim-radio/issues</url>
+
+  <launchable type="desktop-id">io.github.AhmadTakkoush.QuranRadio.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Tray menu showing station selection and play control</caption>
+      <image>https://raw.githubusercontent.com/AhmadTakkoush/quran-karim-radio/main/screenshots/tray-menu.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Volume controls popup window</caption>
+      <image>https://raw.githubusercontent.com/AhmadTakkoush/quran-karim-radio/main/screenshots/volume-popup.png</image>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+    <release version="1.0.0" date="2026-03-29">
+      <description>
+        <p>Initial release.</p>
+      </description>
+    </release>
+  </releases>
+
+  <content_rating type="oars-1.1"/>
+
+  <categories>
+    <category>Audio</category>
+    <category>Player</category>
+  </categories>
+
+  <keywords>
+    <keyword>quran</keyword>
+    <keyword>radio</keyword>
+    <keyword>islam</keyword>
+    <keyword>stream</keyword>
+    <keyword>tray</keyword>
+  </keywords>
+</component>
