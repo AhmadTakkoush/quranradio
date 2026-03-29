@@ -70,10 +70,7 @@ cp quran_radio.desktop ~/.config/autostart/
 | Station | URL |
 |---------|-----|
 | Quran Kareem — Beirut | `https://audio.osina.cloud:7987/stream` |
-| Quran Kareem — Cairo (ERTU 98.2 FM) | `http://stream.radiojar.com/quraneg` |
-
-The Cairo URL is verified at startup; if unreachable the app tries
-`https://zeno.fm/radio/egypt-quran-radio/` as a fallback.
+| Quran Kareem — Cairo (ERTU 98.2 FM) | `https://n06.radiojar.com/8s5u5tpdtwzuv` |
 
 ## Uninstall
 
