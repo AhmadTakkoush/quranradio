@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Quran Radio
+Comment=Quran Karim Radio Station tray app
+Exec=python3 /opt/quran-radio/quran_radio.py
+Icon=/opt/quran-radio/icon.png
+Terminal=false
+Categories=Audio;Player;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
