@@ -52,4 +52,4 @@ modules:
       - type: git
         url: https://github.com/AhmadTakkoush/quranradio.git
         tag: v1.0.0
-        commit: placeholder
+        commit: babb5c66adbb39693de0b6803c209c748c0804d9
