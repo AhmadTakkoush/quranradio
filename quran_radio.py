@@ -447,6 +447,39 @@ class QuranRadioApp:
         # ── GStreamer ──
         self.player = Gst.ElementFactory.make("playbin", "player")
         self.player.set_property("volume", self.volume / 100.0)
+
+        # Force mono→stereo upmix: downmix to true mono first, then expand
+        # to stereo so both channels carry audio regardless of source layout.
+        try:
+            to_mono    = Gst.ElementFactory.make("audioconvert", "to_mono")
+            mono_caps  = Gst.ElementFactory.make("capsfilter",   "mono_caps")
+            to_stereo  = Gst.ElementFactory.make("audioconvert", "to_stereo")
+            ster_caps  = Gst.ElementFactory.make("capsfilter",   "ster_caps")
+            sink       = Gst.ElementFactory.make("autoaudiosink","audio_out")
+
+            mono_caps.set_property(
+                "caps", Gst.Caps.from_string("audio/x-raw,channels=1")
+            )
+            ster_caps.set_property(
+                "caps",
+                Gst.Caps.from_string("audio/x-raw,channels=2,channel-mask=(bitmask)0x3"),
+            )
+
+            stereo_bin = Gst.Bin.new("stereo_sink")
+            for el in (to_mono, mono_caps, to_stereo, ster_caps, sink):
+                stereo_bin.add(el)
+            to_mono.link(mono_caps)
+            mono_caps.link(to_stereo)
+            to_stereo.link(ster_caps)
+            ster_caps.link(sink)
+            stereo_bin.add_pad(
+                Gst.GhostPad.new("sink", to_mono.get_static_pad("sink"))
+            )
+            self.player.set_property("audio-sink", stereo_bin)
+            print("[audio] stereo sink active (mono→stereo upmix)")
+        except Exception as e:
+            print(f"[audio] mono→stereo sink unavailable: {e}")
+
         bus = self.player.get_bus()
         bus.add_signal_watch()
         bus.connect("message", self._on_gst_message)

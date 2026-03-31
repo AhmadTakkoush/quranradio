@@ -7,26 +7,19 @@ Quran radio stations directly from the top panel bar.
 
 ## Features
 
-- Sits in the GNOME top panel via AppIndicator3
+- Sits in the GNOME top panel via the StatusNotifierItem protocol
 - Two stations: Beirut and Cairo (ERTU 98.2 FM)
 - Play / Stop toggle
 - Volume slider (0–100 %)
 - Live status: Stopped / Buffering… / Playing / Error
 - Remembers last selected station and volume across sessions
-- Auto-verifies the Cairo stream URL at startup and falls back if unreachable
+- Mono streams upmixed to stereo — audio plays in both ears
+- Auto-verifies the Cairo stream URL at startup
 - Graceful 8-second connection timeout with error message
 
 ## Install
 
-### Flatpak (recommended)
-
-Once approved on Flathub:
-
-```bash
-flatpak install flathub io.github.AhmadTakkoush.QuranRadio
-```
-
-### Quick Install (native)
+### Quick Install
 
 ```bash
 chmod +x install.sh
@@ -45,7 +38,7 @@ chmod +x install.sh
 
 ```bash
 sudo apt install python3-gi python3-gi-cairo \
-     gir1.2-gtk-3.0 gir1.2-appindicator3-0.1 \
+     gir1.2-gtk-3.0 \
      gir1.2-gst-plugins-base-1.0 \
      gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
      gstreamer1.0-libav
@@ -57,12 +50,18 @@ sudo apt install python3-gi python3-gi-cairo \
 python3 quran_radio.py
 ```
 
-#### 3. Autostart on login (optional)
+#### 3. Add to Applications list (optional)
+
+```bash
+sudo cp quran_radio.py /opt/quran-radio/quran_radio.py
+cp quran_radio.desktop ~/.local/share/applications/quran-radio.desktop
+```
+
+#### 4. Autostart on login (optional)
 
 ```bash
 mkdir -p ~/.config/autostart
 cp quran_radio.desktop ~/.config/autostart/
-# Edit the Exec= path inside to point to wherever quran_radio.py lives
 ```
 
 ## Radio Stations
@@ -77,4 +76,4 @@ cp quran_radio.desktop ~/.config/autostart/
 ```bash
 sudo rm -rf /opt/quran-radio /usr/local/bin/quran-radio
 rm ~/.config/autostart/quran-radio.desktop
-```
+rm ~/.local/share/applications/quran-radio.desktop
